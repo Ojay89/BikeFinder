@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#7f8c8d"
+    tools:context=".SignUpActivity">
+
+    <TextView
+        android:id="@+id/signUpHeaderTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="Opret bruger"
+        android:layout_marginTop="50dp"
+        android:textColor="#FFFFFF"
+        android:textAlignment="center"
+        android:textSize="35sp" />
+
+        <EditText
+            android:id="@+id/signUpFullnameEditView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5sp"
+            android:layout_marginTop="50dp"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#ffff"
+            android:hint="Navn"
+            android:inputType="text"
+            android:layout_marginStart="30dp"
+            android:layout_marginEnd="30dp"/>
+
+
+        <EditText
+            android:id="@+id/signUpPhoneNoEditView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5sp"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#ffff"
+            android:hint="Telefon"
+            android:inputType="number"
+            android:layout_marginStart="30dp"
+            android:layout_marginEnd="30dp"/>
+
+
+
+        <EditText
+            android:id="@+id/signUpEmailEditView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5sp"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#ffff"
+            android:hint="Email"
+            android:inputType="textEmailAddress"
+            android:layout_marginStart="30dp"
+            android:layout_marginEnd="30dp"/>
+
+
+        <EditText
+            android:id="@+id/signUpPasswordEditView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5sp"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#ffff"
+            android:hint="Adgangskode"
+            android:inputType="text"
+            android:layout_marginStart="30dp"
+            android:layout_marginEnd="30dp"/>
+
+    <Button
+        android:id="@+id/signUpCreateButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="60dp"
+        android:text="Opret bruger"
+        android:layout_gravity="center"
+        android:layout_marginRight="60sp"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp" />
+
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/mainMessageTextView"/>
+
+    <ProgressBar
+        android:id="@+id/mainProgressbar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center|center"
+        android:visibility="invisible"
+        android:layout_marginLeft="-10dp"/>
+
+
+
+
+</LinearLayout>

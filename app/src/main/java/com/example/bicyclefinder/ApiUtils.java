@@ -1,0 +1,14 @@
+package com.example.bicyclefinder;
+
+class ApiUtils {
+    private ApiUtils() {
+    }
+
+    private static final String BASE_URL = "https://anbo-bicyclefinder.azurewebsites.net/api/";
+
+    public static BikeFinderService getBikeFinderService() {
+
+        return RetrofitClient.getClient(BASE_URL).create(BikeFinderService.class);
+    }
+}
+

@@ -1,0 +1,25 @@
+<resources>
+    <string name="app_name">Bike Finder</string>
+    <string name="about">About</string>
+    <string name="settings">Settings</string>
+
+    <string-array name="types_array">
+        <item>Herre City</item>
+        <item>Kvinde City</item>
+        <item>Børne</item>
+        <item>Mountainbike</item>
+        <item>Racercykel</item>
+    </string-array>
+
+    <string-array name="missingFound_array">
+        <item>Fundet</item>
+        <item>Efterlyst</item>
+
+    </string-array>
+    <string name="title_activity_main2">MainActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+
+
+</resources>

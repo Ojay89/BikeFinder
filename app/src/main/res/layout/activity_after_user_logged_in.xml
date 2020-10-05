@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:fab="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#7f8c8d"
+    tools:context=".AfterUserLoggedIn"
+    style="@style/Widget.MaterialComponents.BottomAppBar.Colored">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="191dp"
+            android:layout_height="148dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="35dp"
+            app:srcCompat="@mipmap/logo_makr" />
+
+        <TextView
+            android:id="@+id/afterLoggedInTextViewHeader"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="Velkommen til Bike Finder"
+            android:textColor="#FFFFFF"
+            android:textSize="20dp"
+            android:layout_gravity="center"/>
+
+        <TextView
+            android:id="@+id/afterLoggedInTextViewText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="50dp"
+            android:layout_marginTop="25dp"
+            android:layout_marginEnd="40dp"
+            android:layout_gravity="center"
+            android:text="Her kan du efterlyse din cykel samt fremlyse fundne cykler."
+            android:textColor="#FFFFFF"
+            android:textSize="14dp" />
+
+        <TextView
+            android:id="@+id/afterLoggedInTextViewText2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="50dp"
+            android:layout_marginTop="25dp"
+            android:layout_marginEnd="40dp"
+            android:layout_gravity="center"
+            android:text="Tryk på menuen for at se efterlyste samt fremlyste cykler."
+            android:textColor="#FFFFFF"
+            android:textSize="14dp" />
+
+        <TextView
+            android:id="@+id/afterLoggedInTextViewText3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="50dp"
+            android:layout_marginTop="25dp"
+            android:layout_marginEnd="40dp"
+            android:layout_gravity="center"
+            android:text="Klik på '+' for at efterlyse eller fremlyse en cykel."
+            android:textColor="#FFFFFF"
+            android:textSize="14dp" />
+
+        <ProgressBar
+            android:id="@+id/mainProgressbar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center|center"
+            android:visibility="invisible"/>
+
+
+    </LinearLayout>
+
+
+    <com.google.android.material.bottomappbar.BottomAppBar
+        android:id="@+id/bottom_App_Bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:backgroundTint="@color/colorPrimary"
+        app:menu="@menu/app_bar_menu"
+        style="@style/Widget.MaterialComponents.BottomAppBar.Colored"
+        app:fabAlignmentMode="center"
+        app:fabCradleRoundedCornerRadius="8dp"/>
+
+
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/floatingActionButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:src="@drawable/ic_add"
+        android:backgroundTint="@color/colorAccent"
+        app:tint="@color/colorBlack"
+        app:layout_anchor="@id/bottom_App_Bar" />
+
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|center">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#FFFFFF"
+        android:text=" Efterlys din cykel "
+        android:background="@drawable/rounded_corner"
+        android:visibility="invisible"
+        android:id="@+id/floatingActionButtonBikeWantedText"
+        android:layout_marginStart="140dp"
+
+        android:elevation="7dp"/>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/floatingActionButtonBikeWanted"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:layout_gravity="bottom|center"
+        app:fabSize="mini"
+        android:layout_marginBottom="100dp"
+        android:src="@drawable/ic_baseline_directions_bike_24"
+        android:visibility="invisible"
+        android:backgroundTint="@color/colorfab"
+        app:tint="@color/colorBlack"
+        tools:visibility="visible"/>
+
+
+    </FrameLayout>
+
+
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|center">
+
+        <TextView
+            android:id="@+id/floatingActionButtonBikeFoundText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#FFFFFF"
+            android:text=" Tilføj fundet cykel "
+            android:visibility="invisible"
+            android:background="@drawable/rounded_corner"
+            android:layout_marginStart="140dp"
+            android:elevation="7dp"/>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/floatingActionButtonBikeFound"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:layout_gravity="bottom|center"
+        app:fabSize="mini"
+        android:layout_marginBottom="160dp"
+        android:visibility="invisible"
+        android:backgroundTint="@color/colorfab"
+        app:tint="@color/colorBlack"
+        tools:visibility="visible"
+        android:src="@drawable/ic_baseline_highlight_24"/>
+
+
+
+
+
+</FrameLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
+
