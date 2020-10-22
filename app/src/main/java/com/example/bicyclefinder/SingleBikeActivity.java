@@ -26,6 +26,16 @@ public class SingleBikeActivity extends AppCompatActivity implements AdapterView
     private static final String LOG_TAG = "MYBIKES";
     private Bike originalBike;
     private TextView messageView;
+    TextView heading;
+    EditText frameNumber;
+    EditText type;
+    EditText brand;
+    EditText color;
+    EditText location;
+    EditText date;
+    EditText missingFound;
+
+
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
@@ -37,12 +47,38 @@ public class SingleBikeActivity extends AppCompatActivity implements AdapterView
         Intent intent = getIntent();
         originalBike = (Bike) intent.getSerializableExtra(BIKE);
 
-        Log.d(LOG_TAG, originalBike.toString());
-        TextView headingView = findViewById(R.id.singleBikeHeadingTextview);
-        headingView.setText("Bike Brand=" + originalBike.getBrand());
+        heading = findViewById(R.id.singleBikeHeadingTextview);
+        heading.setText(originalBike.getBrand());
 
-        EditText frameNumberView = findViewById(R.id.singleBikeFrameNumberEditText);
-        frameNumberView.setText(originalBike.getFrameNumber());
+        frameNumber = findViewById(R.id.singleBikeFrameNumberEditText);
+        frameNumber.setEnabled(false);
+        frameNumber.setText(originalBike.getFrameNumber());
+
+        type = findViewById(R.id.singleBikeKindOfBicycleEditText);
+        type.setEnabled(false);
+        type.setText(originalBike.getKindOfBicycle());
+
+        brand = findViewById(R.id.singleBikeBrandEditText);
+        brand.setEnabled(false);
+        brand.setText(originalBike.getBrand());
+
+        color = findViewById(R.id.singleBikeColorEditText);
+        color.setEnabled(false);
+        color.setText(originalBike.getColors());
+
+        location = findViewById(R.id.singleBikePlaceEditText);
+        location.setEnabled(false);
+        location.setText(originalBike.getPlace());
+
+        date = findViewById(R.id.singleBikeDateEditText);
+        date.setEnabled(false);
+        date.setText(originalBike.getDate());
+
+        missingFound = findViewById(R.id.singleBikeMissingFoundEditText);
+        missingFound.setEnabled(false);
+        missingFound.setText(originalBike.getMissingFound());
+
+
 
         /*Spinner kindOfBicycleView = findViewById(R.id.singleBikeKindOfBicycleSpinner);
         ArrayAdapter<CharSequence> kindOfAdapter = ArrayAdapter.createFromResource(this, R.array.Types, android.R.layout.simple_spinner_item);

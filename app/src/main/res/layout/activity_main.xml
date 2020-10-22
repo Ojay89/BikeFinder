@@ -42,7 +42,7 @@
         android:inputType="textEmailAddress"
         android:padding="15dp"
         android:textColor="#FFFFFF"
-        android:textColorHint="#ffff" />
+        android:textColorHint="#ffff"/>
 
     <EditText
         android:id="@+id/mainPasswordEditText"
@@ -58,45 +58,40 @@
         android:textColorHint="#ffff" />
 
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:layout_marginTop="10dp"
+        android:weightSum="2">
 
 
         <Button
             android:id="@+id/mainLoginButton"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginStart="30dp"
+            android:layout_weight="2"
+            android:insetRight="20dp"
             android:onClick="loginClicked"
             android:text="Login" />
 
         <Button
             android:id="@+id/mainSignUpButton"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="30dp"
+            android:layout_weight="1"
             android:onClick="signUpClicked"
-            android:layout_marginLeft="86dp"
             android:text="Opret bruger" />
 
     </LinearLayout>
-
-    <Button
-        android:id="@+id/LoginUserClickAuto"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginStart="30dp"
-        android:onClick="loginClickedAuto"
-        android:text="Login Auto" />
 
     <ProgressBar
         android:id="@+id/mainProgressbar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center|center"
-        android:visibility="invisible"
+        android:visibility="gone"
         android:layout_marginLeft="-10dp"/>
 
     <TextView

@@ -18,6 +18,7 @@ import android.widget.Toast;
 
 import com.google.android.material.bottomappbar.BottomAppBar;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class AfterUserLoggedIn extends AppCompatActivity {
 
@@ -26,6 +27,9 @@ public class AfterUserLoggedIn extends AppCompatActivity {
     private ProgressBar progressBar;
     private TextView floatingText1;
     private TextView floatingText2;
+    private FirebaseAuth mAuth;
+    TextView welcomeName;
+
 
     FloatingActionButton fab, fab1, fab2;
     boolean isFabOpen = false;
@@ -42,6 +46,13 @@ public class AfterUserLoggedIn extends AppCompatActivity {
         fab2 = findViewById(R.id.floatingActionButtonBikeFound);
         FabAnimation.init(fab1);
         FabAnimation.init(fab2);
+        mAuth = FirebaseAuth.getInstance();
+
+        Intent intent = getIntent();
+        intent.getStringExtra("UserloggedIn");
+        welcomeName = findViewById(R.id.afterLoggedInTextTextView);
+        welcomeName.setText("Hej, " + intent.getStringExtra( "UserloggedIn"));
+        welcomeName.setEnabled(false);
 
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -116,6 +127,11 @@ public class AfterUserLoggedIn extends AppCompatActivity {
         progressBar.setVisibility(View.INVISIBLE);
     }
 
+    public void logout_clicked(MenuItem item) {
+        mAuth.signOut();
+        finish();
+
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -124,3 +140,5 @@ public class AfterUserLoggedIn extends AppCompatActivity {
         return true;
     }
 }
+
+

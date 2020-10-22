@@ -6,6 +6,7 @@ package com.example.bicyclefinder;
         import android.os.Bundle;
         import android.view.View;
         import android.widget.AdapterView;
+        import android.widget.ArrayAdapter;
         import android.widget.EditText;
         import android.widget.ProgressBar;
         import android.widget.Spinner;
@@ -22,6 +23,7 @@ public class AddFoundBikeActivity extends AppCompatActivity implements AdapterVi
     private ProgressBar progressBar;
     private TextView messageView;
     private FirebaseAuth mAuth;
+    //private Spinner spinner;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +32,11 @@ public class AddFoundBikeActivity extends AppCompatActivity implements AdapterVi
         progressBar = findViewById(R.id.addBikeProgressbar);
         messageView = findViewById(R.id.singleBikeMessageTextView);
         mAuth = FirebaseAuth.getInstance();
+        Spinner spinner = findViewById(R.id.singleBikeKindOfBicycleSpinner);
+        ArrayAdapter adapter = ArrayAdapter.createFromResource(this, R.array.types_array, R.layout.spinner_dropdown_layout);
+        spinner.setAdapter(adapter);
+        spinner.setOnItemSelectedListener(this);
+
         /*Spinner spinnerType = findViewById(R.id.singleBikeKindOfBicycleSpinner);
         Spinner spinnerMissingFound = findViewById(R.id.singleBikeMissingFoundEditText);
         ArrayAdapter<CharSequence> adapterType = ArrayAdapter.createFromResource(this, R.array.types_array, android.R.layout.simple_spinner_item);
@@ -53,7 +60,6 @@ public class AddFoundBikeActivity extends AppCompatActivity implements AdapterVi
         EditText dateField = findViewById(R.id.singleBikeDateEditText);
         EditText missingFoundField = findViewById(R.id.singleBikeMissingFoundEditText);
         // Spinner missingFoundField = findViewById(R.id.singleBikeMissingFoundEditText);
-
         String frameNumber = frameField.getText().toString().trim();
         String brand = brandField.getText().toString().trim();
         String color = colorField.getText().toString().trim();
@@ -101,10 +107,16 @@ public class AddFoundBikeActivity extends AppCompatActivity implements AdapterVi
         finish();
     }
 
-    @Override
+   /* @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
         String text = parent.getItemAtPosition(position).toString();
+    }*/
+
+   @Override
+    public void onItemSelected(AdapterView<?> adapterView, View view, int position, long id) {
+        String text = adapterView.getItemAtPosition(position).toString();
     }
+
 
     @Override
     public void onNothingSelected(AdapterView<?> parent) {

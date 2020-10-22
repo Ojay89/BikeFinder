@@ -9,6 +9,11 @@
     tools:context=".AfterUserLoggedIn"
     style="@style/Widget.MaterialComponents.BottomAppBar.Colored">
 
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fillViewport="true">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -16,17 +21,17 @@
 
         <ImageView
             android:id="@+id/imageView"
-            android:layout_width="191dp"
-            android:layout_height="148dp"
+            android:layout_width="89dp"
+            android:layout_height="74dp"
             android:layout_gravity="center"
-            android:layout_marginTop="35dp"
+            android:layout_marginTop="5dp"
             app:srcCompat="@mipmap/logo_makr" />
 
         <TextView
             android:id="@+id/afterLoggedInTextViewHeader"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="10dp"
             android:text="Velkommen til Bike Finder"
             android:textColor="#FFFFFF"
             android:textSize="20dp"
@@ -36,7 +41,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_marginTop="25dp">
+            android:layout_marginTop="15dp">
 
         <TextView
             android:id="@+id/afterLoggedInTextViewText"
@@ -63,7 +68,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="50dp"
-            android:layout_marginTop="25dp"
+            android:layout_marginTop="15dp"
             android:layout_marginEnd="40dp"
             android:layout_gravity="center"
             android:text="Her kan du efterlyse din cykel samt fremlyse fundne cykler."
@@ -75,7 +80,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="50dp"
-            android:layout_marginTop="25dp"
+            android:layout_marginTop="15dp"
             android:layout_marginEnd="40dp"
             android:layout_gravity="center"
             android:text="Tryk på menuen for at se efterlyste samt fremlyste cykler."
@@ -87,12 +92,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="50dp"
-            android:layout_marginTop="25dp"
+            android:layout_marginTop="15dp"
             android:layout_marginEnd="40dp"
             android:layout_gravity="center"
             android:text="Klik på '+' for at efterlyse eller fremlyse en cykel."
             android:textColor="#FFFFFF"
-            android:textSize="14dp" />
+            android:textSize="14dp"
+            android:layout_marginBottom="20dp"/>
 
         <ProgressBar
             android:id="@+id/mainProgressbar"
@@ -103,6 +109,7 @@
 
 
     </LinearLayout>
+    </ScrollView>
 
 
     <com.google.android.material.bottomappbar.BottomAppBar

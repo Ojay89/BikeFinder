@@ -13,16 +13,16 @@
         android:id="@+id/singleBikeHeadingTextview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="30dp"
         android:text="Efterlys cykel"
+        android:textSize="35dp"
+        android:layout_gravity="center"
         android:textColor="#FFFFFF"
-        android:textSize="35dp" />
+        android:layout_marginTop="30dp" />
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp">
+        android:layout_marginTop="25dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -44,6 +44,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Stelnummer"
+                android:textColorHint="#dadada"
                 android:inputType="textCapCharacters"
                 android:textColor="#FFFFFF" />
 
@@ -60,7 +61,7 @@
                 android:id="@+id/singleBikeKindOfBicycleSpinner"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
+                android:layout_marginLeft="-7dp"
                 android:textColor="#FFFFFF"/>
 
             <TextView
@@ -76,6 +77,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Mærke"
+                android:textColorHint="#dadada"
                 android:inputType="textCapSentences"
                 android:textColor="#FFFFFF" />
 
@@ -92,6 +94,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Farve(r)"
+                android:textColorHint="#dadada"
                 android:inputType="textCapSentences"
                 android:textColor="#FFFFFF" />
 
@@ -106,7 +109,8 @@
                 android:id="@+id/singleBikePlaceEditText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Hvor er den fundet?"
+                android:hint="Hvor er cyklen stjålet/fundet?"
+                android:textColorHint="#dadada"
                 android:inputType="textCapSentences"
                 android:textColor="#FFFFFF" />
 
@@ -122,6 +126,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Dato for fundet/mistet cykel?"
+                android:textColorHint="#dadada"
                 android:inputType="datetime"
                 android:textColor="#FFFFFF" />
 

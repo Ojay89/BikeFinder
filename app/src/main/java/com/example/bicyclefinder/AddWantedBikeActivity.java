@@ -17,7 +17,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class AddWantedBikeActivity extends AppCompatActivity  implements AdapterView.OnItemSelectedListener {
+public class AddWantedBikeActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
     private ProgressBar progressBar;
     private TextView messageView;
 
@@ -27,6 +27,10 @@ public class AddWantedBikeActivity extends AppCompatActivity  implements Adapter
         setContentView(R.layout.activity_add_bike);
         progressBar = findViewById(R.id.addBikeProgressbar);
         messageView = findViewById(R.id.singleBikeMessageTextView);
+        Spinner spinner = findViewById(R.id.singleBikeKindOfBicycleSpinner);
+        ArrayAdapter adapter = ArrayAdapter.createFromResource(this, R.array.types_array, R.layout.spinner_dropdown_layout);
+        spinner.setAdapter(adapter);
+        spinner.setOnItemSelectedListener(this);
         /*Spinner spinnerType = findViewById(R.id.singleBikeKindOfBicycleSpinner);
         Spinner spinnerMissingFound = findViewById(R.id.singleBikeMissingFoundEditText);
         ArrayAdapter<CharSequence> adapterType = ArrayAdapter.createFromResource(this, R.array.types_array, android.R.layout.simple_spinner_item);
@@ -73,9 +77,9 @@ public class AddWantedBikeActivity extends AppCompatActivity  implements Adapter
             @Override
             public void onResponse(Call<Bike> call, Response<Bike> response) {
                 progressBar.setVisibility(View.INVISIBLE);
-                if(response.isSuccessful()) {
+                if (response.isSuccessful()) {
                     Bike newBike = response.body();
-                    Toast.makeText(getBaseContext(),  "Cykel tilføjet", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getBaseContext(), "Cykel tilføjet", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(getBaseContext(), AfterUserLoggedIn.class);
                     startActivity(intent);
                     progressBar.setVisibility(View.VISIBLE);
@@ -95,13 +99,18 @@ public class AddWantedBikeActivity extends AppCompatActivity  implements Adapter
 
     }
 
-    public void backButtonClicked (View view) {
+    public void backButtonClicked(View view) {
         finish();
     }
 
-    @Override
+   /* @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
         String text = parent.getItemAtPosition(position).toString();
+    }*/
+
+    @Override
+    public void onItemSelected(AdapterView<?> adapterView, View view, int position, long id) {
+        String text = adapterView.getItemAtPosition(position).toString();
     }
 
     @Override
@@ -109,3 +118,4 @@ public class AddWantedBikeActivity extends AppCompatActivity  implements Adapter
 
     }
 }
+

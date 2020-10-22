@@ -20,7 +20,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="5dp"
             android:text="Detaljeret oplysninger"
             android:textColor="#FFFFFF"
             android:textSize="35dp" />
@@ -28,7 +28,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="25dp"
+            android:layout_marginTop="10dp"
             android:labelFor="@+id/singleBikeFrameNumberTextView"
             android:text="Cyklens Stelnummer"
             android:textColor="#FFFFFF" />

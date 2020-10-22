@@ -1,11 +1,14 @@
 package com.example.bicyclefinder;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -48,7 +51,6 @@ public class MainActivity extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         messageView = findViewById(R.id.mainMessageTextView);
         progressBar = findViewById(R.id.mainProgressbar);
-        loginClickedAuto(view);
     }
 
     public void onStart() {
@@ -59,6 +61,10 @@ public class MainActivity extends AppCompatActivity {
             messageView.setText("Ingen er logget ind");
         } else {
             messageView.setText(currentUser.getEmail());
+            Intent intent = new Intent(getBaseContext(), AfterUserLoggedIn.class);
+            FirebaseUser user = mAuth.getCurrentUser();
+            intent.putExtra("UserloggedIn", user.getEmail());
+            startActivity(intent);
         }
     }
 
@@ -87,6 +93,7 @@ public class MainActivity extends AppCompatActivity {
                             FirebaseUser user = mAuth.getCurrentUser();
                             messageView.setText("Velkommen" + " " + user.getEmail());
                             Intent intent = new Intent(getBaseContext(), AfterUserLoggedIn.class);
+                            //String username = user.getEmail();
                             intent.putExtra("UserloggedIn", user.getEmail());
                             startActivity(intent);
 
@@ -105,14 +112,5 @@ public class MainActivity extends AppCompatActivity {
     public void signUpClicked(View view) {
         Intent intent = new Intent(this, SignUpActivity.class);
         startActivity(intent);
-    }
-
-    public void loginClickedAuto(View view) {
-        EditText emailView = findViewById(R.id.mainEmailEditText);
-        EditText passwordView = findViewById(R.id.mainPasswordEditText);
-        emailView.setText("test@test.com");
-        passwordView.setText("123456");
-        loginClicked(view);
-
     }
 }

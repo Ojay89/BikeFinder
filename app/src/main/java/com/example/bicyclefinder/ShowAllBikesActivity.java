@@ -25,7 +25,7 @@ public class ShowAllBikesActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.acticity_show_all_bikes);
+        setContentView(R.layout.activity_show_all_bikes);
         messageView = findViewById(R.id.mainMessageTextView);
         progressBar = findViewById(R.id.mainProgressbar);
     }
