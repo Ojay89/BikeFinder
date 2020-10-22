@@ -150,6 +150,8 @@ public class SingleBikeActivity extends AppCompatActivity implements AdapterView
         EditText colorField = findViewById(R.id.singleBikeColorEditText);
         EditText placeField = findViewById(R.id.singleBikePlaceEditText);
         EditText dateField = findViewById(R.id.singleBikeDateEditText);
+        EditText nameField = findViewById(R.id.singleBikeNameEditText);
+        EditText phoneField = findViewById(R.id.singleBikePhoneEditText);
         EditText missingFoundField = findViewById(R.id.singleBikeMissingFoundEditText);
         //Spinner missingFoundField = findViewById(R.id.singleBikeMissingFoundEditText);
 
@@ -159,13 +161,14 @@ public class SingleBikeActivity extends AppCompatActivity implements AdapterView
         String color = colorField.getText().toString().trim();
         String place = placeField.getText().toString().trim();
         String date = dateField.getText().toString().trim();
+        String name = nameField.getText().toString().trim();
+        String phone = phoneField.getText().toString().trim();
         String selectedType = (String) typeField.getSelectedItem();
         String missingFound = missingFoundField.getText().toString().trim();
         //Spinner type = (Spinner) typeField.getSelectedItem();
         //Spinner missingFound = (Spinner) missingFoundField.getSelectedItem();
 
-
-        Bike bikeToUpdate = new Bike(frameNumber, selectedType, brand, color, place, date, missingFound);
+        Bike bikeToUpdate = new Bike(1, frameNumber, selectedType, brand, color, place, "", 100, name, phone, missingFound);
         Log.d(LOG_TAG, "Update " + bikeToUpdate);
 
         BikeFinderService bikeFinderService = ApiUtils.getBikeFinderService();

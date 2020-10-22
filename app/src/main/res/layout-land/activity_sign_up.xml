@@ -20,31 +20,6 @@
         android:textSize="35sp" />
 
     <EditText
-        android:id="@+id/signUpFullnameEditView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="5sp"
-        android:textColor="#FFFFFF"
-        android:textColorHint="#ffff"
-        android:hint="Navn"
-        android:inputType="textEmailAddress"
-        android:layout_marginStart="50dp"
-        android:layout_marginEnd="50dp"/>
-
-
-    <EditText
-        android:id="@+id/signUpPhoneNoEditView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="5sp"
-        android:textColor="#FFFFFF"
-        android:textColorHint="#ffff"
-        android:hint="Telefon"
-        android:inputType="number"
-        android:layout_marginStart="50dp"
-        android:layout_marginEnd="50dp"/>
-
-    <EditText
         android:id="@+id/signUpEmailEditView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -53,9 +28,9 @@
         android:textColorHint="#ffff"
         android:hint="Email"
         android:inputType="textEmailAddress"
+        android:layout_marginTop="50dp"
         android:layout_marginStart="50dp"
         android:layout_marginEnd="50dp"/>
-
 
     <EditText
         android:id="@+id/signUpPasswordEditView"

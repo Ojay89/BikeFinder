@@ -23,8 +23,8 @@ public interface BikeFinderService {
     @GET("bicycles/{foundMissing}")
     Call<List<Bike>> getFoundMissingBike(@Path("foundMissing") String foundMissing);
 
-    @GET("users/firebaseuserid/{id}")
-    Call<User> getUserByFirebaseId(@Path("id") String firebaseuserid);
+    //@GET("users/firebaseuserid/{id}")
+    //Call<User> getUserByFirebaseId(@Path("id") String firebaseuserid);
 
     @POST("bicycles")
     Call<Bike> saveBikeBody(@Body Bike bike);

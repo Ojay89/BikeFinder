@@ -1,11 +1,9 @@
 package com.example.bicyclefinder;
-import android.widget.Spinner;
 
 import androidx.annotation.NonNull;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 import java.io.Serializable;
-import java.time.LocalDateTime;
 
 public class Bike implements Serializable  {
 
@@ -36,21 +34,31 @@ public class Bike implements Serializable  {
     @SerializedName("missingFound")
     @Expose
     private String missingFound;
+    @SerializedName("name")
+    @Expose
+    private String name;
+    @SerializedName("phone")
+    @Expose
+    private String phone;
 
     public Bike(){
 
     }
 
-    public Bike(String frameNumber, String kindOfBicycle, String brand, String colors, String place, String date, String missingFound) {
+    public Bike(int id, String frameNumber, String kindOfBicycle, String brand, String colors, String place, String date, int userId, String name,  String phone, String missingFound) {
+        this.id = id;
         this.frameNumber = frameNumber;
         this.kindOfBicycle = kindOfBicycle;
         this.brand = brand;
-        this.colors = colors;
-        this.place = place;
-        this.date = date;
-        this.missingFound = missingFound;
+        this.colors=colors;
+        this.place=place;
+        this.date=date;
+        this.name=name;
+        this.phone=phone;
+        this.missingFound=missingFound;
+        this.userId=userId;
+        
     }
-
 
     public Integer getId() {
         return id;
@@ -118,6 +126,18 @@ public class Bike implements Serializable  {
         return missingFound;
     }
 
+    public String setMissingFound(String missingFound) {
+        return missingFound;
+    }
+    
+    public String getName() {return name;}
+    
+    public void setName(String name) {this.name = name;}
+    
+    public String getPhone() {return phone;}
+    
+    public void setPhone(String phone) {this.phone = phone;}
+
 
   //  public void setMissingFound(Spinner missingFound) {
     //    this.missingFound = missingFound;
@@ -128,7 +148,7 @@ public class Bike implements Serializable  {
     @NonNull
     @Override
     public String toString() {
-        return  "Dato: " + date + "\n" + "Mærke: " + brand + "\n" + "Stelnummer: " + frameNumber + "\n" + "Type: " + kindOfBicycle + "\n"
-                + "Farve: " + colors + "\n" + "Sted: " + place + "\n" + "Fundet/Stjålet: " + missingFound + "\n\n" ; }
+        return  "Mærke: " + brand + "\n" + "Stelnummer: " + frameNumber + "\n" + "Type: " + kindOfBicycle + "\n"
+                + "Farve: " + colors + "\n" + "Sted: " + place + "\n" + "Navn: " + name + "\n" + "Telefon nr: " + phone + "\n" + "Fundet/Stjålet: " + missingFound + "\n\n" ; }
 }
 

@@ -48,14 +48,18 @@ public class AddWantedBikeActivity extends AppCompatActivity  implements Adapter
         EditText colorField = findViewById(R.id.singleBikeColorEditText);
         EditText placeField = findViewById(R.id.singleBikePlaceEditText);
         EditText dateField = findViewById(R.id.singleBikeDateEditText);
+        EditText nameField = findViewById(R.id.singleBikeNameEditText);
+        EditText phoneField = findViewById(R.id.singleBikePhoneEditText);
         //EditText missingFoundField = findViewById(R.id.singleBikeMissingFoundEditText);
-        EditText missingFoundField = findViewById(R.id.singleBikeMissingFoundEditText);
+        //EditText missingFoundField = findViewById(R.id.singleBikeMissingFoundEditText);
 
         String frameNumber = frameField.getText().toString().trim();
         String brand = brandField.getText().toString().trim();
         String color = colorField.getText().toString().trim();
         String place = placeField.getText().toString().trim();
-        String date = dateField.getText().toString().trim();
+//        String date = dateField.getText().toString().trim();
+        String name = nameField.getText().toString().trim();
+        String phone = phoneField.getText().toString().trim();
         String selectedType = (String) typeField.getSelectedItem();
         String selectedMissingFound = "missing";
 
@@ -63,8 +67,7 @@ public class AddWantedBikeActivity extends AppCompatActivity  implements Adapter
         //Spinner selectedMissingFound = (Spinner) missingFoundField.getSelectedItem();
 
         BikeFinderService bikeFinderService = ApiUtils.getBikeFinderService();
-        Bike bike = new Bike(frameNumber, selectedType, brand, color, place, date, selectedMissingFound);
-
+        Bike bike = new Bike(1, frameNumber, selectedType, brand, color, place,"", 100, name, phone, selectedMissingFound);
 
         Call<Bike> saveBikeCall = bikeFinderService.saveBikeBody(bike);
         progressBar.setVisibility(View.VISIBLE);

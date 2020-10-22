@@ -114,7 +114,7 @@
                 android:id="@+id/singleBikePlaceEditText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Hvor er cyklen stjålet/fundet?"
+                android:hint="Hvor er cyklen fundet?"
                 android:textColorHint="#dadada"
                 android:inputType="textCapSentences"
                 android:textColor="#FFFFFF"/>
@@ -122,18 +122,35 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:labelFor="@+id/singleBikeDateEditText"
-                android:text="Dato"
-                android:textColor="#FFFFFF"/>
+                android:labelFor="@+id/singleBikeNameEditText"
+                android:text="Navn"
+                android:textColor="#FFFFFF" />
 
             <EditText
-                android:id="@+id/singleBikeDateEditText"
+                android:id="@+id/singleBikeNameEditText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Dato for fundet/mistet cykel?"
+                android:hint="Dit navn"
                 android:textColorHint="#dadada"
-                android:inputType="datetime"
-                android:textColor="#FFFFFF"/>
+                android:inputType="text"
+                android:textColor="#FFFFFF" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:labelFor="@+id/singleBikePhoneEditText"
+                android:text="Telefon nr."
+                android:textColor="#FFFFFF" />
+
+            <EditText
+                android:id="@+id/singleBikePhoneEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Dit telefon nr."
+                android:textColorHint="#dadada"
+                android:inputType="number"
+                android:textColor="#FFFFFF" />
+
 
             <TextView
                 android:layout_width="wrap_content"
