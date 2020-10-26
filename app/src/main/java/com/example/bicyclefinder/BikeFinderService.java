@@ -17,11 +17,13 @@ public interface BikeFinderService {
     @GET("bicycles")
     Call<List<Bike>> getAllBikes();
 
+
     @GET("bicycles/{bikeId}")
     Call<Bike> getBikeById(@Path("bikeId") int bikeId);
 
     @GET("bicycles/{foundMissing}")
     Call<List<Bike>> getFoundMissingBike(@Path("foundMissing") String foundMissing);
+
 
     //@GET("users/firebaseuserid/{id}")
     //Call<User> getUserByFirebaseId(@Path("id") String firebaseuserid);

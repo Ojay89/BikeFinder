@@ -29,7 +29,8 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:layout_marginStart="30dp"
-            android:layout_marginEnd="30dp">
+            android:layout_marginEnd="30dp"
+            android:layout_gravity="center">
 
 
             <TextView
@@ -166,19 +167,20 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:visibility="invisible" />
+                android:visibility="gone" />
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:layout_gravity="center">
 
 
                 <Button
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="30dp"
                     android:onClick="addBikeButtonClicked"
+                    android:textColor="#149414"
                     android:text="Tilføj" />
 
                 <Button

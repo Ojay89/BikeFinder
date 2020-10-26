@@ -16,6 +16,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.bicyclefinder.ui.ShowMyBikesActivity;
 import com.google.android.material.bottomappbar.BottomAppBar;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
@@ -123,6 +124,13 @@ public class AfterUserLoggedIn extends AppCompatActivity {
     public void all_bikesClicked(MenuItem item) {
         progressBar.setVisibility(View.VISIBLE);
         Intent intent = new Intent(AfterUserLoggedIn.this, ShowAllBikesActivity.class);
+        startActivity(intent);
+        progressBar.setVisibility(View.INVISIBLE);
+    }
+
+    public void myBikesClicked(MenuItem item) {
+        progressBar.setVisibility(View.VISIBLE);
+        Intent intent = new Intent(AfterUserLoggedIn.this, ShowMyBikesActivity.class);
         startActivity(intent);
         progressBar.setVisibility(View.INVISIBLE);
     }

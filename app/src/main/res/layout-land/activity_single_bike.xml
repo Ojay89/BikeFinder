@@ -117,6 +117,36 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:labelFor="@+id/singleBikeNameEditText"
+            android:text="Oprettet af"
+            android:textColor="#FFFFFF" />
+
+        <EditText
+            android:id="@+id/singleBikeNameEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Udfyld dit navn"
+            android:inputType="text"
+            android:textColor="#FFFFFF" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:labelFor="@+id/singleBikeNameEditText"
+            android:text="Telefon nr."
+            android:textColor="#FFFFFF" />
+
+        <EditText
+            android:id="@+id/singleBikePhoneEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Udfyld dit telefon nr."
+            android:inputType="number"
+            android:textColor="#FFFFFF" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:labelFor="@+id/singleBikeMissingFoundEditText"
             android:text="Efterlyst/Fremlyst?"
             android:textColor="#FFFFFF" />

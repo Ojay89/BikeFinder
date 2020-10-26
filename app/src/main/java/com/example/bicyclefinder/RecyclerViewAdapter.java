@@ -66,7 +66,7 @@ public class RecyclerViewAdapter<T> extends RecyclerView.Adapter<RecyclerViewAda
         return count;
     }
 
-    void setOnItemClickListener(OnItemClickListener<T> itemClickListener) {
+    public void setOnItemClickListener(OnItemClickListener<T> itemClickListener) {
         this.onItemClickListener = itemClickListener;
     }
 

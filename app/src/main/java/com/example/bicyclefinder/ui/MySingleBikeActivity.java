@@ -1,4 +1,4 @@
-package com.example.bicyclefinder;
+package com.example.bicyclefinder.ui;
 
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
@@ -10,23 +10,30 @@ import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.util.Date;
+import com.example.bicyclefinder.ApiUtils;
+import com.example.bicyclefinder.Bike;
+import com.example.bicyclefinder.BikeFinderService;
+import com.example.bicyclefinder.R;
+
+import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class SingleBikeActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
+public class MySingleBikeActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
+
     public static final String BIKE = "BIKE";
     private static final String LOG_TAG = "MYBIKES";
     private Bike originalBike;
     private TextView messageView;
+    private ProgressBar progressBar;
     TextView heading;
     EditText frameNumber;
     EditText type;
@@ -39,14 +46,15 @@ public class SingleBikeActivity extends AppCompatActivity implements AdapterView
     EditText missingFound;
 
 
-
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_single_bike);
+        setContentView(R.layout.activity_my_single_bike);
+        progressBar = findViewById(R.id.mainProgressbar);
         messageView = findViewById(R.id.singleBikeMessageTextView);
+
 
         Intent intent = getIntent();
         originalBike = (Bike) intent.getSerializableExtra(BIKE);
@@ -128,6 +136,15 @@ public class SingleBikeActivity extends AppCompatActivity implements AdapterView
     public void backButtonClicked(View view) {
         Log.d(LOG_TAG, "backButtonClicked");
         finish();
+    }
+
+    public void deleteButtonClicked(View view) {
+        Log.d(LOG_TAG, "deleteButtonClicked");
+        BikeFinderService bikeFinderService = ApiUtils.getBikeFinderService();
+        //Call<List<Bike>> getAndDeleteBikesCall = bikeFinderService.deleteBike();
+        messageView.setText("");
+        progressBar.setVisibility(View.VISIBLE);
+
     }
 
     public void deleteBookButtonClicked(View view) {
@@ -220,5 +237,4 @@ public class SingleBikeActivity extends AppCompatActivity implements AdapterView
     public void onNothingSelected(AdapterView<?> parent) {
 
     }
-
 }

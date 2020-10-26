@@ -23,7 +23,7 @@
             android:layout_marginTop="30dp"
             android:text="Detaljeret oplysninger"
             android:textColor="#FFFFFF"
-            android:textSize="35dp" />
+            android:textSize="25dp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -117,6 +117,37 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:labelFor="@+id/singleBikeNameEditText"
+            android:text="Oprettet af"
+            android:textColor="#FFFFFF" />
+
+        <EditText
+            android:id="@+id/singleBikeNameEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Udfyld dit navn"
+            android:inputType="text"
+            android:textColor="#FFFFFF" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:labelFor="@+id/singleBikeNameEditText"
+            android:text="Telefon nr."
+            android:textColor="#FFFFFF" />
+
+        <EditText
+            android:id="@+id/singleBikePhoneEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Udfyld dit telefon nr."
+            android:inputType="number"
+            android:textColor="#FFFFFF" />
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:labelFor="@+id/singleBikeMissingFoundEditText"
             android:text="Efterlyst/Fremlyst?"
             android:textColor="#FFFFFF" />
@@ -128,16 +159,22 @@
             android:layout_height="wrap_content"
             android:textColor="#FFFFFF"/>
 
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:onClick="backButtonClicked"
-            android:text="Tilbage" />
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="backButtonClicked"
+                android:layout_marginStart="50dp"
+                android:layout_marginEnd="50dp"
+                android:layout_gravity="center"
+
+                android:text="Tilbage" />
 
         <TextView
             android:id="@+id/singleBikeMessageTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 
-    </LinearLayout>
+        </LinearLayout>
+
 </ScrollView>

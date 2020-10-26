@@ -110,7 +110,7 @@ public class Bike implements Serializable  {
         return date;
     }
 
-    public void setDate(String date) {
+    public void setdate(String date) {
         this.date = date;
     }
 
@@ -149,6 +149,6 @@ public class Bike implements Serializable  {
     @Override
     public String toString() {
         return  "Mærke: " + brand + "\n" + "Stelnummer: " + frameNumber + "\n" + "Type: " + kindOfBicycle + "\n"
-                + "Farve: " + colors + "\n" + "Sted: " + place + "\n" + "Navn: " + name + "\n" + "Telefon nr: " + phone + "\n" + "Fundet/Stjålet: " + missingFound + "\n\n" ; }
+                + "Farve: " + colors + "\n" + "Sted: " + place + "\n" + "Navn: " + name + "\n" + "Telefon nr: " +phone + "\n" + "Fundet/Stjålet: " + missingFound + "\n\n" ; }
 }
 

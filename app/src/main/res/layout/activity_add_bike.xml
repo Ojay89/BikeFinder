@@ -180,6 +180,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="30dp"
                 android:onClick="addBikeButtonClicked"
+                android:textColor="#149414"
                 android:text="Tilføj" />
 
             <Button

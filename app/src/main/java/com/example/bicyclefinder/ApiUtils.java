@@ -1,6 +1,6 @@
 package com.example.bicyclefinder;
 
-class ApiUtils {
+public class ApiUtils {
     private ApiUtils() {
     }
 

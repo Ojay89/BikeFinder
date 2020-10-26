@@ -19,6 +19,17 @@
         android:textColor="#FFFFFF"
         android:textSize="25sp" />
 
+    <TextView
+        android:id="@+id/loggedInSubHeader"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="Fundne Cykler"
+        android:layout_marginTop="30dp"
+        android:textAlignment="center"
+        android:textColor="#FFFFFF"
+        android:textSize="15sp" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/userLoggedInRecyclerView"
         android:layout_width="match_parent"

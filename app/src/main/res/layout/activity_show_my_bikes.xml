@@ -24,7 +24,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:text="Fundne Cykler"
+        android:text="Mine tilføjede cykler"
         android:layout_marginTop="30dp"
         android:textAlignment="center"
         android:textColor="#FFFFFF"
@@ -47,7 +47,7 @@
         android:layout_gravity="center|center"
         android:layout_marginLeft="-10dp"
         android:layout_marginTop="100dp"
-        android:visibility="invisible" />
+        android:visibility="gone" />
 
     <TextView
         android:id="@+id/mainMessageTextView"
