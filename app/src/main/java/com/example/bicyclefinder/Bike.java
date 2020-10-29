@@ -40,13 +40,15 @@ public class Bike implements Serializable  {
     @SerializedName("phone")
     @Expose
     private String phone;
+    @SerializedName("fireBaseUserId")
+    @Expose
+    private String firebaseUserId;
 
     public Bike(){
 
     }
 
-    public Bike(int id, String frameNumber, String kindOfBicycle, String brand, String colors, String place, String date, int userId, String name,  String phone, String missingFound) {
-        this.id = id;
+    public Bike(String frameNumber, String kindOfBicycle, String brand, String colors, String place, String date, int userId, String name,  String phone, String missingFound, String firebaseUserId) {
         this.frameNumber = frameNumber;
         this.kindOfBicycle = kindOfBicycle;
         this.brand = brand;
@@ -57,8 +59,10 @@ public class Bike implements Serializable  {
         this.phone=phone;
         this.missingFound=missingFound;
         this.userId=userId;
+        this.firebaseUserId =firebaseUserId;
         
     }
+
 
     public Integer getId() {
         return id;
@@ -137,6 +141,9 @@ public class Bike implements Serializable  {
     public String getPhone() {return phone;}
     
     public void setPhone(String phone) {this.phone = phone;}
+
+    public String getFirebaseUserId() {return firebaseUserId;}
+    public void setFirebaseUserId(String firebaseUserId) {this.firebaseUserId=firebaseUserId;}
 
 
   //  public void setMissingFound(Spinner missingFound) {
