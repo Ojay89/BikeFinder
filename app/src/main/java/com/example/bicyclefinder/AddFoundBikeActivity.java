@@ -1,26 +1,29 @@
 package com.example.bicyclefinder;
 
-        import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
-        import android.content.Intent;
-        import android.os.Bundle;
-        import android.view.View;
-        import android.widget.AdapterView;
-        import android.widget.ArrayAdapter;
-        import android.widget.EditText;
-        import android.widget.ProgressBar;
-        import android.widget.Spinner;
-        import android.widget.TextView;
-        import android.widget.Toast;
+import android.content.Intent;
+import android.os.Bundle;
+import android.text.SpannableStringBuilder;
+import android.text.style.ForegroundColorSpan;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.EditText;
+import android.widget.ProgressBar;
+import android.widget.Spinner;
+import android.widget.TextView;
+import android.widget.Toast;
 
-        import com.google.firebase.auth.FirebaseAuth;
-        import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
-        import retrofit2.Call;
-        import retrofit2.Callback;
-        import retrofit2.Response;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
-public class AddFoundBikeActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener  {
+public class AddFoundBikeActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
     private ProgressBar progressBar;
     private TextView messageView;
     private FirebaseAuth mAuth;
@@ -77,56 +80,99 @@ public class AddFoundBikeActivity extends AppCompatActivity implements AdapterVi
         //Spinner selectedType = (Spinner) typeField.getSelectedItem();
         //Spinner selectedMissingFound = (Spinner) missingFoundField.getSelectedItem();
 
-        BikeFinderService bikeFinderService = ApiUtils.getBikeFinderService();
-        Bike bike = new Bike(frameNumber, selectedType, brand, color, place, "", 100,  name, phone, selectedMissingFound, firebaseUserId);
+        int errorColor = ContextCompat.getColor(getApplicationContext(), R.color.error);
+        ForegroundColorSpan foregroundColorSpan = new ForegroundColorSpan(errorColor);
 
-        Call<Bike> saveBikeCall = bikeFinderService.saveBikeBody(bike);
-        progressBar.setVisibility(View.VISIBLE);
-        saveBikeCall.enqueue(new Callback<Bike>() {
-            @Override
-            public void onResponse(Call<Bike> call, Response<Bike> response) {
-                progressBar.setVisibility(View.INVISIBLE);
-                if(response.isSuccessful()) {
-                    Bike newBike = response.body();
-                    Toast.makeText(getBaseContext(),  "Cykel tilføjet", Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(getBaseContext(), AfterUserLoggedIn.class);
-                    FirebaseUser user = mAuth.getCurrentUser();
-                    intent.putExtra("UserloggedIn", user.getEmail());
-                    startActivity(intent);
-                    progressBar.setVisibility(View.VISIBLE);
-                } else {
-                    String problem = "problem" + response.code() + " " + response.message();
-                    messageView.setText("Problem Opstået");
+        if (frameNumber.isEmpty()) {
+            String errorString = "Udfyld stelnummer";
+            SpannableStringBuilder spannableStringBuilder = new SpannableStringBuilder(errorString);
+            spannableStringBuilder.setSpan(foregroundColorSpan, 0, errorString.length(), 0);
+            frameField.setError(spannableStringBuilder);
+        } else if (brand.isEmpty()) {
+            String errorString = "Udfyld cykel mærke";
+            SpannableStringBuilder spannableStringBuilder = new SpannableStringBuilder(errorString);
+            spannableStringBuilder.setSpan(foregroundColorSpan, 0, errorString.length(), 0);
+            brandField.setError(spannableStringBuilder);
+        } else if (color.isEmpty()) {
+            String errorString = "Udfyld farve";
+            SpannableStringBuilder spannableStringBuilder = new SpannableStringBuilder(errorString);
+            spannableStringBuilder.setSpan(foregroundColorSpan, 0, errorString.length(), 0);
+            colorField.setError(spannableStringBuilder);
+
+        } else if (place.isEmpty()) {
+            String errorString = "Udfyld placering";
+            SpannableStringBuilder spannableStringBuilder = new SpannableStringBuilder(errorString);
+            spannableStringBuilder.setSpan(foregroundColorSpan, 0, errorString.length(), 0);
+            placeField.setError(spannableStringBuilder);
+
+        } else if (name.isEmpty()) {
+            String errorString = "Udfyld navn";
+            SpannableStringBuilder spannableStringBuilder = new SpannableStringBuilder(errorString);
+            spannableStringBuilder.setSpan(foregroundColorSpan, 0, errorString.length(), 0);
+            nameField.setError(spannableStringBuilder);
+
+        } else if (phone.isEmpty()) {
+            String errorString = "Udfyld telefon nummer";
+            SpannableStringBuilder spannableStringBuilder = new SpannableStringBuilder(errorString);
+            spannableStringBuilder.setSpan(foregroundColorSpan, 0, errorString.length(), 0);
+            phoneField.setError(spannableStringBuilder);
+        } else {
+
+            Bike bike = new Bike(frameNumber, selectedType, brand, color, place, "", 100, name, phone, selectedMissingFound, firebaseUserId);
+
+            BikeFinderService bikeFinderService = ApiUtils.getBikeFinderService();
+
+            Call<Bike> saveBikeCall = bikeFinderService.saveBikeBody(bike);
+            progressBar.setVisibility(View.VISIBLE);
+            saveBikeCall.enqueue(new Callback<Bike>() {
+                @Override
+                public void onResponse(Call<Bike> call, Response<Bike> response) {
+                    progressBar.setVisibility(View.INVISIBLE);
+                    if (response.isSuccessful()) {
+                        Bike newBike = response.body();
+                        Toast.makeText(getBaseContext(), "Cykel tilføjet", Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(getBaseContext(), AfterUserLoggedIn.class);
+                        FirebaseUser user = mAuth.getCurrentUser();
+                        intent.putExtra("UserloggedIn", user.getEmail());
+                        startActivity(intent);
+                        progressBar.setVisibility(View.VISIBLE);
+                    } else {
+                        String problem = "problem" + response.code() + " " + response.message();
+                        messageView.setText("Problem Opstået");
+                    }
+                    progressBar.setVisibility(View.INVISIBLE);
                 }
-                progressBar.setVisibility(View.INVISIBLE);
-            }
 
-            @Override
-            public void onFailure(Call<Bike> call, Throwable t) {
-                progressBar.setVisibility(View.INVISIBLE);
-                messageView.setText(t.getMessage());
-            }
-        });
-
+                @Override
+                public void onFailure(Call<Bike> call, Throwable t) {
+                    progressBar.setVisibility(View.INVISIBLE);
+                    messageView.setText(t.getMessage());
+                }
+            });
+        }
     }
 
-    public void backButtonClicked (View view) {
-        finish();
-    }
+
+
+        public void backButtonClicked (View view){
+            finish();
+        }
 
    /* @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
         String text = parent.getItemAtPosition(position).toString();
     }*/
 
-   @Override
-    public void onItemSelected(AdapterView<?> adapterView, View view, int position, long id) {
-        String text = adapterView.getItemAtPosition(position).toString();
+        @Override
+        public void onItemSelected (AdapterView < ? > adapterView, View view,int position, long id){
+            String text = adapterView.getItemAtPosition(position).toString();
+        }
+
+
+        @Override
+        public void onNothingSelected (AdapterView < ? > parent){
+        }
+
     }
 
 
-    @Override
-    public void onNothingSelected(AdapterView<?> parent) {
-
-    }
-}

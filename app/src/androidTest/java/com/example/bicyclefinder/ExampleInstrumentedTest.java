@@ -3,6 +3,7 @@ package com.example.bicyclefinder;
 import android.content.Context;
 import android.os.SystemClock;
 
+import androidx.test.espresso.ViewAction;
 import androidx.test.platform.app.InstrumentationRegistry;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 import androidx.test.rule.ActivityTestRule;
@@ -18,6 +19,7 @@ import static androidx.test.espresso.action.ViewActions.closeSoftKeyboard;
 import static androidx.test.espresso.action.ViewActions.typeText;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
 import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
+import static androidx.test.espresso.matcher.ViewMatchers.withContentDescription;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
 
@@ -46,10 +48,15 @@ public class ExampleInstrumentedTest {
         onView(withId(R.id.mainEmailEditText)).perform(typeText("test@test.com"));
         onView(withId(R.id.mainPasswordEditText)).perform(typeText("123456")).perform(closeSoftKeyboard());
         onView(withId(R.id.mainLoginButton)).perform(click());
+        SystemClock.sleep(10000);
+        onView(withId(R.id.afterLoggedInTextViewHeader)).check(matches(withText("Velkommen til Bike Finder")));
 
-        SystemClock.sleep(3000);
-        onView(withId(R.id.loggedInHeader)).check(matches(withText("Efterlyste Cykler")));
 
+        onView(withId(R.id.floatingActionButton)).perform(click());
+        SystemClock.sleep(2000);
+        onView(withId(R.id.floatingActionButtonBikeFound)).perform(click());
+        SystemClock.sleep(2000);
+        onView(withId(R.id.singleBikeHeadingTextview)).check(matches(withText("Tilføj fundet cykel")));
 
 
     }
