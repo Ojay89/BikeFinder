@@ -12,6 +12,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 import java.util.List;
 
@@ -44,6 +45,8 @@ public class ShowMyBikesActivity extends AppCompatActivity {
     public void onBackPressed()
     {
         Intent intent = new Intent(getBaseContext(), AfterUserLoggedIn.class);
+        FirebaseUser user = mAuth.getCurrentUser();
+        intent.putExtra("UserloggedIn", user.getEmail());
         startActivity(intent);
     }
 
