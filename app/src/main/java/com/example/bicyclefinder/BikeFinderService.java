@@ -24,15 +24,15 @@ public interface BikeFinderService {
     @GET("bicycles/{foundMissing}")
     Call<List<Bike>> getFoundMissingBike(@Path("foundMissing") String foundMissing);
 
+    @GET("bicycles/firebaseUserId/{firebaseId}")
+    Call<List<Bike>> getFirebaseUserId(@Path("firebaseId") String firebaseId);
 
-    //@GET("users/firebaseuserid/{id}")
-    //Call<User> getUserByFirebaseId(@Path("id") String firebaseuserid);
 
     @POST("bicycles")
     Call<Bike> saveBikeBody(@Body Bike bike);
 
     @DELETE("bicycles/{id}")
-    Call<Bike> deleteBike(@Path("id") int id);
+    Call<Integer> deleteBike(@Path("id") int id);
 
     @PUT("bicycles/{id}")
     Call<Bike> updateBike(@Path("id") int id, @Body Bike bike);
