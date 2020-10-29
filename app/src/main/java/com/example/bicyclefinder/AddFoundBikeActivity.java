@@ -14,6 +14,7 @@ package com.example.bicyclefinder;
         import android.widget.Toast;
 
         import com.google.firebase.auth.FirebaseAuth;
+        import com.google.firebase.auth.FirebaseUser;
 
         import retrofit2.Call;
         import retrofit2.Callback;
@@ -68,6 +69,7 @@ public class AddFoundBikeActivity extends AppCompatActivity implements AdapterVi
         String place = placeField.getText().toString().trim();
         String name = nameField.getText().toString().trim();
         String phone = phoneField.getText().toString().trim();
+        String firebaseUserId = mAuth.getCurrentUser().getUid();
         //String date = dateField.getText().toString().trim();
         String selectedType = (String) typeField.getSelectedItem();
         String selectedMissingFound = "found";
@@ -76,7 +78,7 @@ public class AddFoundBikeActivity extends AppCompatActivity implements AdapterVi
         //Spinner selectedMissingFound = (Spinner) missingFoundField.getSelectedItem();
 
         BikeFinderService bikeFinderService = ApiUtils.getBikeFinderService();
-        Bike bike = new Bike(1, frameNumber, selectedType, brand, color, place, "", 100,  name, phone, selectedMissingFound);
+        Bike bike = new Bike(frameNumber, selectedType, brand, color, place, "", 100,  name, phone, selectedMissingFound, firebaseUserId);
 
         Call<Bike> saveBikeCall = bikeFinderService.saveBikeBody(bike);
         progressBar.setVisibility(View.VISIBLE);
@@ -88,6 +90,8 @@ public class AddFoundBikeActivity extends AppCompatActivity implements AdapterVi
                     Bike newBike = response.body();
                     Toast.makeText(getBaseContext(),  "Cykel tilføjet", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(getBaseContext(), AfterUserLoggedIn.class);
+                    FirebaseUser user = mAuth.getCurrentUser();
+                    intent.putExtra("UserloggedIn", user.getEmail());
                     startActivity(intent);
                     progressBar.setVisibility(View.VISIBLE);
                 } else {

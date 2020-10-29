@@ -22,7 +22,7 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="25dp">
+        android:layout_marginTop="20dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -146,21 +146,6 @@
                 android:inputType="number"
                 android:textColor="#FFFFFF" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:labelFor="@+id/singleBikeMissingFoundEditText"
-                android:text="Efterlyst/Fremlyst?"
-                android:textColor="#FFFFFF" />
-
-            <EditText
-                android:id="@+id/singleBikeMissingFoundEditText"
-                android:layout_width="250dp"
-                android:layout_height="wrap_content"
-                android:textColor="#FFFFFF"
-                android:text="Missing"
-                android:enabled="false"/>
-
 
             <ProgressBar
                 android:id="@+id/addBikeProgressbar"
@@ -172,13 +157,13 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:layout_gravity="center">
 
 
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="30dp"
                 android:onClick="addBikeButtonClicked"
                 android:textColor="#149414"
                 android:text="Tilføj" />

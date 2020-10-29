@@ -13,6 +13,9 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -20,11 +23,13 @@ import retrofit2.Response;
 public class AddWantedBikeActivity extends AppCompatActivity  implements AdapterView.OnItemSelectedListener {
     private ProgressBar progressBar;
     private TextView messageView;
+    private FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_bike);
+        mAuth = FirebaseAuth.getInstance();
         progressBar = findViewById(R.id.addBikeProgressbar);
         messageView = findViewById(R.id.singleBikeMessageTextView);
         /*Spinner spinnerType = findViewById(R.id.singleBikeKindOfBicycleSpinner);
@@ -37,6 +42,10 @@ public class AddWantedBikeActivity extends AppCompatActivity  implements Adapter
         spinnerMissingFound.setAdapter(adapterMissingFound);
         spinnerType.setOnItemSelectedListener(this);
         spinnerMissingFound.setOnItemSelectedListener(this);*/
+        Spinner spinner = findViewById(R.id.singleBikeKindOfBicycleSpinner);
+        ArrayAdapter adapter = ArrayAdapter.createFromResource(this, R.array.types_array, R.layout.spinner_dropdown_layout);
+        spinner.setAdapter(adapter);
+        spinner.setOnItemSelectedListener(this);
 
     }
 
@@ -60,6 +69,7 @@ public class AddWantedBikeActivity extends AppCompatActivity  implements Adapter
 //        String date = dateField.getText().toString().trim();
         String name = nameField.getText().toString().trim();
         String phone = phoneField.getText().toString().trim();
+        String firebaseUserId = mAuth.getCurrentUser().getUid();
         String selectedType = (String) typeField.getSelectedItem();
         String selectedMissingFound = "missing";
 
@@ -67,7 +77,7 @@ public class AddWantedBikeActivity extends AppCompatActivity  implements Adapter
         //Spinner selectedMissingFound = (Spinner) missingFoundField.getSelectedItem();
 
         BikeFinderService bikeFinderService = ApiUtils.getBikeFinderService();
-        Bike bike = new Bike(1, frameNumber, selectedType, brand, color, place,"", 100, name, phone, selectedMissingFound);
+        Bike bike = new Bike(frameNumber, selectedType, brand, color, place,"", 100, name, phone, selectedMissingFound, firebaseUserId);
 
         Call<Bike> saveBikeCall = bikeFinderService.saveBikeBody(bike);
         progressBar.setVisibility(View.VISIBLE);
@@ -80,6 +90,8 @@ public class AddWantedBikeActivity extends AppCompatActivity  implements Adapter
                     Bike newBike = response.body();
                     Toast.makeText(getBaseContext(),  "Cykel tilføjet", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(getBaseContext(), AfterUserLoggedIn.class);
+                    FirebaseUser user = mAuth.getCurrentUser();
+                    intent.putExtra("UserloggedIn", user.getEmail());
                     startActivity(intent);
                     progressBar.setVisibility(View.VISIBLE);
                 } else {

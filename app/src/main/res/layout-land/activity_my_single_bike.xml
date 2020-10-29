@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#7f8c8d"
+    android:fillViewport="true"
+    tools:context=".MySingleBikeActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_marginEnd="30dp"
+        android:layout_marginStart="30dp">
+
+        <TextView
+            android:id="@+id/singleBikeHeadingTextview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="30dp"
+            android:text="Detaljeret oplysninger"
+            android:textColor="#FFFFFF"
+            android:textSize="35dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:labelFor="@+id/singleBikeFrameNumberTextView"
+            android:text="Cyklens Stelnummer"
+            android:textColor="#FFFFFF" />
+
+        <EditText
+            android:id="@+id/singleBikeFrameNumberEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Stelnummer"
+            android:inputType="text"
+            android:textColor="#FFFFFF" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:labelFor="@id/singleBikeKindOfBicycleEditText"
+            android:text="Type"
+            android:textColor="#FFFFFF" />
+
+        <EditText
+            android:id="@+id/singleBikeKindOfBicycleEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#FFFFFF" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:labelFor="@+id/singleBikeBrandEditText"
+            android:text="Mærke"
+            android:textColor="#FFFFFF" />
+
+        <EditText
+            android:id="@+id/singleBikeBrandEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Mærke"
+            android:inputType="text"
+            android:textColor="#FFFFFF" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:labelFor="@+id/singleBikeColorEditText"
+            android:text="Farve(r)"
+            android:textColor="#FFFFFF" />
+
+        <EditText
+            android:id="@+id/singleBikeColorEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Farve(r)"
+            android:inputType="text"
+            android:textColor="#FFFFFF" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:labelFor="@+id/singleBikePlaceEditText"
+            android:text="Lokation"
+            android:textColor="#FFFFFF" />
+
+        <EditText
+            android:id="@+id/singleBikePlaceEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Hvor er den fundet?"
+            android:inputType="text"
+            android:textColor="#FFFFFF" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:labelFor="@+id/singleBikeDateEditText"
+            android:text="Dato"
+            android:textColor="#FFFFFF" />
+
+        <EditText
+            android:id="@+id/singleBikeDateEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Dato for fundet/mistet cykel?"
+            android:inputType="datetime"
+            android:textColor="#FFFFFF" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:labelFor="@+id/singleBikeNameEditText"
+            android:text="Oprettet af"
+            android:textColor="#FFFFFF" />
+
+        <EditText
+            android:id="@+id/singleBikeNameEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Udfyld dit navn"
+            android:inputType="text"
+            android:textColor="#FFFFFF" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:labelFor="@+id/singleBikeNameEditText"
+            android:text="Telefon nr."
+            android:textColor="#FFFFFF" />
+
+        <EditText
+            android:id="@+id/singleBikePhoneEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Udfyld dit telefon nr."
+            android:inputType="number"
+            android:textColor="#FFFFFF" />
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:labelFor="@+id/singleBikeMissingFoundEditText"
+            android:text="Efterlyst/Fremlyst?"
+            android:textColor="#FFFFFF" />
+
+
+        <EditText
+            android:id="@+id/singleBikeMissingFoundEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#FFFFFF"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="deleteButtonClicked"
+            android:layout_weight="2"
+            android:layout_marginStart="15dp"
+            android:layout_marginEnd="15dp"
+            android:textColor="@color/deletebutton"
+            android:text="Slet cykel" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="backButtonClicked"
+            android:layout_weight="2"
+            android:layout_marginStart="15dp"
+            android:layout_marginEnd="15dp"
+            android:text="Tilbage" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/singleBikeMessageTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+
+
+</ScrollView>

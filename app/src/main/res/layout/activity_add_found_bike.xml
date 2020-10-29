@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="#7f8c8d"
-    tools:context=".AddWantedBikeActivity">
+    tools:context=".AddFoundBikeActivity">
 
 
     <TextView
@@ -17,20 +17,19 @@
         android:textSize="35dp"
         android:layout_gravity="center"
         android:textColor="#FFFFFF"
-        android:layout_marginTop="30dp"/>
+        android:layout_marginTop="30dp" />
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="25dp">
+        android:layout_marginTop="20dp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
             android:layout_marginStart="30dp"
             android:layout_marginEnd="30dp"
-            android:layout_gravity="center">
+            android:orientation="vertical">
 
 
             <TextView
@@ -38,7 +37,7 @@
                 android:layout_height="wrap_content"
                 android:labelFor="@+id/singleBikeFrameNumberEditText"
                 android:text="Cyklens Stelnummer"
-                android:textColor="#FFFFFF"/>
+                android:textColor="#FFFFFF" />
 
             <EditText
                 android:id="@+id/singleBikeFrameNumberEditText"
@@ -47,7 +46,7 @@
                 android:hint="Stelnummer"
                 android:textColorHint="#dadada"
                 android:inputType="textCapCharacters"
-                android:textColor="#FFFFFF"/>
+                android:textColor="#FFFFFF" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -55,7 +54,7 @@
                 android:labelFor="@id/singleBikeKindOfBicycleSpinner"
                 android:text="Type"
                 android:layout_marginTop="10dp"
-                android:textColor="#FFFFFF"/>
+                android:textColor="#FFFFFF" />
 
             <Spinner
                 android:entries="@array/types_array"
@@ -63,15 +62,15 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="-7dp"
-                android:textColor="#FFFFFF" />
+                android:textColor="#FFFFFF"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:labelFor="@+id/singleBikeBrandEditText"
-                android:layout_marginTop="10dp"
                 android:text="Mærke"
-                android:textColor="#FFFFFF"/>
+                android:layout_marginTop="10dp"
+                android:textColor="#FFFFFF" />
 
             <EditText
                 android:id="@+id/singleBikeBrandEditText"
@@ -80,14 +79,15 @@
                 android:hint="Mærke"
                 android:textColorHint="#dadada"
                 android:inputType="textCapSentences"
-                android:textColor="#FFFFFF"/>
+                android:textColor="#FFFFFF" />
+
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:labelFor="@+id/singleBikeColorEditText"
                 android:text="Farve(r)"
-                android:textColor="#FFFFFF"/>
+                android:textColor="#FFFFFF" />
 
             <EditText
                 android:id="@+id/singleBikeColorEditText"
@@ -96,14 +96,14 @@
                 android:hint="Farve(r)"
                 android:textColorHint="#dadada"
                 android:inputType="textCapSentences"
-                android:textColor="#FFFFFF"/>
+                android:textColor="#FFFFFF" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:labelFor="@+id/singleBikePlaceEditText"
                 android:text="Lokation"
-                android:textColor="#FFFFFF"/>
+                android:textColor="#FFFFFF" />
 
             <EditText
                 android:id="@+id/singleBikePlaceEditText"
@@ -112,7 +112,7 @@
                 android:hint="Hvor er cyklen fundet?"
                 android:textColorHint="#dadada"
                 android:inputType="textCapSentences"
-                android:textColor="#FFFFFF"/>
+                android:textColor="#FFFFFF" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -145,22 +145,6 @@
                 android:textColorHint="#dadada"
                 android:inputType="number"
                 android:textColor="#FFFFFF" />
-
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:labelFor="@+id/singleBikeMissingFoundEditText"
-                android:text="Efterlyst/Fremlyst?"
-                android:textColor="#FFFFFF"/>
-
-            <EditText
-                android:id="@+id/singleBikeMissingFoundEditText"
-                android:layout_width="250dp"
-                android:layout_height="wrap_content"
-                android:textColor="#FFFFFF"
-                android:text="Found"
-                android:enabled="false"/>
 
             <ProgressBar
                 android:id="@+id/addBikeProgressbar"
@@ -199,9 +183,6 @@
                 android:layout_height="wrap_content" />
         </LinearLayout>
     </ScrollView>
-
-
-
 
 
 </LinearLayout>

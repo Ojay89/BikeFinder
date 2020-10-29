@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="#7f8c8d"
-    tools:context=".AddWantedBikeActivity">
+    tools:context=".AddFoundBikeActivity">
 
 
     <TextView
@@ -151,22 +151,6 @@
                 android:inputType="number"
                 android:textColor="#FFFFFF" />
 
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:labelFor="@+id/singleBikeMissingFoundEditText"
-                android:text="Efterlyst/Fremlyst?"
-                android:textColor="#FFFFFF"/>
-
-            <EditText
-                android:id="@+id/singleBikeMissingFoundEditText"
-                android:layout_width="250dp"
-                android:layout_height="wrap_content"
-                android:textColor="#FFFFFF"
-                android:text="Found"
-                android:enabled="false"/>
-
             <ProgressBar
                 android:id="@+id/addBikeProgressbar"
                 android:layout_width="wrap_content"
@@ -185,6 +169,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:onClick="addBikeButtonClicked"
+                    android:textColor="#149414"
                     android:text="Tilføj" />
 
                 <Button

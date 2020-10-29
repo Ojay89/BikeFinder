@@ -1,4 +1,4 @@
-package com.example.bicyclefinder.ui;
+package com.example.bicyclefinder;
 
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
@@ -20,6 +20,7 @@ import com.example.bicyclefinder.ApiUtils;
 import com.example.bicyclefinder.Bike;
 import com.example.bicyclefinder.BikeFinderService;
 import com.example.bicyclefinder.R;
+import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.List;
 
@@ -33,6 +34,7 @@ public class MySingleBikeActivity extends AppCompatActivity implements AdapterVi
     private static final String LOG_TAG = "MYBIKES";
     private Bike originalBike;
     private TextView messageView;
+    private FirebaseAuth mAuth;
     private ProgressBar progressBar;
     TextView heading;
     EditText frameNumber;
@@ -54,6 +56,7 @@ public class MySingleBikeActivity extends AppCompatActivity implements AdapterVi
         setContentView(R.layout.activity_my_single_bike);
         progressBar = findViewById(R.id.mainProgressbar);
         messageView = findViewById(R.id.singleBikeMessageTextView);
+        mAuth = FirebaseAuth.getInstance();
 
 
         Intent intent = getIntent();
@@ -139,27 +142,22 @@ public class MySingleBikeActivity extends AppCompatActivity implements AdapterVi
     }
 
     public void deleteButtonClicked(View view) {
-        Log.d(LOG_TAG, "deleteButtonClicked");
-        BikeFinderService bikeFinderService = ApiUtils.getBikeFinderService();
-        //Call<List<Bike>> getAndDeleteBikesCall = bikeFinderService.deleteBike();
-        messageView.setText("");
-        progressBar.setVisibility(View.VISIBLE);
-
-    }
-
-    public void deleteBookButtonClicked(View view) {
         BikeFinderService bikeFinderService = ApiUtils.getBikeFinderService();
         int bikeId = originalBike.getId();
-        Call<Bike> deleteBikeCall = bikeFinderService.deleteBike(bikeId);
+        Call<Integer> deleteBike = bikeFinderService.deleteBike(bikeId);
         messageView.setText("Cykel Slettet");
+        Intent intent = new Intent(getBaseContext(), ShowMyBikesActivity.class);
+        startActivity(intent);
+        //progressBar.setVisibility(View.VISIBLE);
 
-        deleteBikeCall.enqueue(new Callback<Bike>() {
+        deleteBike.enqueue(new Callback<Integer>() {
             @Override
-            public void onResponse(Call<Bike> call, Response<Bike> response) {
+            public void onResponse(Call<Integer> call, Response<Integer> response) {
                 if (response.isSuccessful()) {
-                    String message = "Cykel Slettet, id: " + originalBike.getId();
+                    String message = "Cykel Slettet";
                     Toast.makeText(getBaseContext(), message, Toast.LENGTH_SHORT).show();
                     Log.d(LOG_TAG, message);
+
                 } else {
                     String problem = call.request().url() + "\n" + response.code() + " " + response.message();
                     messageView.setText(problem);
@@ -168,7 +166,7 @@ public class MySingleBikeActivity extends AppCompatActivity implements AdapterVi
             }
 
             @Override
-            public void onFailure(Call<Bike> call, Throwable t) {
+            public void onFailure(Call<Integer> call, Throwable t) {
                 Log.e(LOG_TAG, "Problem: " + t.getMessage());
             }
         });
@@ -198,12 +196,13 @@ public class MySingleBikeActivity extends AppCompatActivity implements AdapterVi
         String date = dateField.getText().toString().trim();
         String name = nameField.getText().toString().trim();
         String phone = phoneField.getText().toString().trim();
+        String firebaseUserId = mAuth.getCurrentUser().getUid();
         String selectedType = (String) typeField.getSelectedItem();
         String missingFound = missingFoundField.getText().toString().trim();
         //Spinner type = (Spinner) typeField.getSelectedItem();
         //Spinner missingFound = (Spinner) missingFoundField.getSelectedItem();
 
-        Bike bikeToUpdate = new Bike(1, frameNumber, selectedType, brand, color, place, "", 100, name, phone, missingFound);
+        Bike bikeToUpdate = new Bike(frameNumber, selectedType, brand, color, place, "", 100, name, phone, missingFound, firebaseUserId);
         Log.d(LOG_TAG, "Update " + bikeToUpdate);
 
         BikeFinderService bikeFinderService = ApiUtils.getBikeFinderService();

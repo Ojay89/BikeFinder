@@ -1,4 +1,4 @@
-package com.example.bicyclefinder.ui;
+package com.example.bicyclefinder;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -11,15 +11,8 @@ import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-import com.example.bicyclefinder.ApiUtils;
-import com.example.bicyclefinder.Bike;
-import com.example.bicyclefinder.BikeFinderService;
-import com.example.bicyclefinder.R;
-import com.example.bicyclefinder.RecyclerViewAdapter;
-import com.example.bicyclefinder.ShowAllBikesActivity;
-import com.example.bicyclefinder.SingleBikeActivity;
+import com.google.firebase.auth.FirebaseAuth;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;
@@ -30,6 +23,7 @@ public class ShowMyBikesActivity extends AppCompatActivity {
     private static final String LOG_TAG = "FoundCycles";
     private TextView messageView;
     private ProgressBar progressBar;
+    private FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,25 +31,34 @@ public class ShowMyBikesActivity extends AppCompatActivity {
         setContentView(R.layout.activity_show_my_bikes);
         messageView = findViewById(R.id.mainMessageTextView);
         progressBar = findViewById(R.id.mainProgressbar);
+        mAuth = FirebaseAuth.getInstance();
     }
-
 
     @Override
     protected void onStart() {
         super.onStart();
-        getAndShowAllBikes();
+        getAndShowMyBikes();
     }
 
-    private void getAndShowAllBikes() {
+    @Override
+    public void onBackPressed()
+    {
+        Intent intent = new Intent(getBaseContext(), AfterUserLoggedIn.class);
+        startActivity(intent);
+    }
+
+    private void getAndShowMyBikes() {
         BikeFinderService bikeFinderService = ApiUtils.getBikeFinderService();
-        Call<List<Bike>> getAllBikesCall = bikeFinderService.getAllBikes();
+        String firebaseId = mAuth.getCurrentUser().getUid();
+        Call<List<Bike>> getMyBikes = bikeFinderService.getFirebaseUserId(firebaseId);
+        Log.d("Minbruger", firebaseId);
         messageView.setText("");
         progressBar.setVisibility(View.VISIBLE);
 
-        getAllBikesCall.enqueue(new Callback<List<Bike>>() {
+        getMyBikes.enqueue(new Callback<List<Bike>>() {
+
             @Override
             public void onResponse(Call<List<Bike>> call, Response<List<Bike>> response) {
-                //testResponseBody body = response.raw();
                 Log.d(LOG_TAG, response.raw().toString());
                 progressBar.setVisibility(View.INVISIBLE);
                 if (response.isSuccessful()) {

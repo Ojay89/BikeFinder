@@ -16,6 +16,8 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
+
 import java.util.Date;
 
 import retrofit2.Call;
@@ -27,6 +29,7 @@ public class SingleBikeActivity extends AppCompatActivity implements AdapterView
     private static final String LOG_TAG = "MYBIKES";
     private Bike originalBike;
     private TextView messageView;
+    private FirebaseAuth mAuth;
     TextView heading;
     EditText frameNumber;
     EditText type;
@@ -47,6 +50,7 @@ public class SingleBikeActivity extends AppCompatActivity implements AdapterView
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_single_bike);
         messageView = findViewById(R.id.singleBikeMessageTextView);
+        mAuth = FirebaseAuth.getInstance();
 
         Intent intent = getIntent();
         originalBike = (Bike) intent.getSerializableExtra(BIKE);
@@ -133,12 +137,12 @@ public class SingleBikeActivity extends AppCompatActivity implements AdapterView
     public void deleteBookButtonClicked(View view) {
         BikeFinderService bikeFinderService = ApiUtils.getBikeFinderService();
         int bikeId = originalBike.getId();
-        Call<Bike> deleteBikeCall = bikeFinderService.deleteBike(bikeId);
+        Call<Integer> deleteBikeCall = bikeFinderService.deleteBike(bikeId);
         messageView.setText("Cykel Slettet");
 
-        deleteBikeCall.enqueue(new Callback<Bike>() {
+        deleteBikeCall.enqueue(new Callback<Integer>() {
             @Override
-            public void onResponse(Call<Bike> call, Response<Bike> response) {
+            public void onResponse(Call<Integer> call, Response<Integer> response) {
                 if (response.isSuccessful()) {
                     String message = "Cykel Slettet, id: " + originalBike.getId();
                     Toast.makeText(getBaseContext(), message, Toast.LENGTH_SHORT).show();
@@ -151,7 +155,7 @@ public class SingleBikeActivity extends AppCompatActivity implements AdapterView
             }
 
             @Override
-            public void onFailure(Call<Bike> call, Throwable t) {
+            public void onFailure(Call<Integer> call, Throwable t) {
                 Log.e(LOG_TAG, "Problem: " + t.getMessage());
             }
         });
@@ -182,11 +186,12 @@ public class SingleBikeActivity extends AppCompatActivity implements AdapterView
         String name = nameField.getText().toString().trim();
         String phone = phoneField.getText().toString().trim();
         String selectedType = (String) typeField.getSelectedItem();
+        String firebaseUserId = mAuth.getCurrentUser().getUid();
         String missingFound = missingFoundField.getText().toString().trim();
         //Spinner type = (Spinner) typeField.getSelectedItem();
         //Spinner missingFound = (Spinner) missingFoundField.getSelectedItem();
 
-        Bike bikeToUpdate = new Bike(1, frameNumber, selectedType, brand, color, place, "", 100, name, phone, missingFound);
+        Bike bikeToUpdate = new Bike(frameNumber, selectedType, brand, color, place, "", 100, name, phone, missingFound, firebaseUserId);
         Log.d(LOG_TAG, "Update " + bikeToUpdate);
 
         BikeFinderService bikeFinderService = ApiUtils.getBikeFinderService();
