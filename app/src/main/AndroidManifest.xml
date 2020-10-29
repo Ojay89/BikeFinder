@@ -12,8 +12,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".ui.MySingleBikeActivity"></activity>
-        <activity android:name=".ui.ShowMyBikesActivity" />
+        <activity android:name=".MySingleBikeActivity" />
+        <activity android:name=".ShowMyBikesActivity" />
         <activity android:name=".AddFoundBikeActivity" />
         <activity android:name=".ShowAllMissingBikesActivity" />
         <activity android:name=".ShowAllFoundBikesActivity" />
